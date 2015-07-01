@@ -72,7 +72,7 @@
                     <div class="shop-menu pull-right">
                         <% if(sessionOk != null && sessionOk.getAttribute("username") != null ){ %>
                         <div class="inicio">
-                            Bienvenido!, <%= sessionOk.getAttribute("fullName")%>
+                            Bienvenido! <span> <%= sessionOk.getAttribute("fullName")%> </span>
                         </div>
                         <% } %>
 
