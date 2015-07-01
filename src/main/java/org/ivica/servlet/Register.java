@@ -28,7 +28,7 @@ public class Register extends HttpServlet {
         ModelUsuario model = new ModelUsuario();
         try {
             model.save(usuario);
-            response.sendRedirect("Mensaje");
+            response.sendRedirect("Mensaje.jsp");
 
         } catch (SQLException e) {
             e.printStackTrace();
