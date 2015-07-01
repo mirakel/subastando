@@ -189,7 +189,8 @@
                             <td><% out.print(prod.getCantidad()); %></td>
                             <td>
                                 <a href="#" alt="agregar imagenes" title="Agregar imagen"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></a>
-
+                                <a href="#" alt="Editar" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                <a href="#" alt="Eliminar" title="Eliminar"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                             </td>
                         </tr>
                         <%

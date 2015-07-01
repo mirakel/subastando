@@ -2529,3 +2529,9 @@ h2.title {
 .center{
     text-align: center;
 }
+.table > thead > tr > th {
+    color: #696763 !important;
+    font-family: "Roboto",sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+}
