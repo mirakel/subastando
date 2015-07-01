@@ -1,10 +1,12 @@
-<%@ page import="org.ivica.modelos.ModelCategoria" %>
-<%@ page import="org.ivica.clases.Categoria" %>
+<%@ page import="org.ivica.modelos.ModelProducto" %>
+<%@ page import="org.ivica.clases.Producto" %>
 <%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
   User: mirakel
-  Date: 29/06/2015
+  Date: 01/07/2015
+  Time: 6:19
+  To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="true" %>
 <% HttpSession sessionOk = request.getSession(); %>
@@ -142,70 +144,67 @@
 
 
 <section>
-<div class="container">
-<div class="row">
-<div class="col-sm-3">
-    <div class="left-sidebar">
-        <h2>Menu</h2>
-        <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Menu</h2>
+                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Productos</a></h4>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="#">Productos</a></h4>
+
+                             </div>
+                        </div>
+
+                    </div><!--/category-products-->
+
                 </div>
             </div>
 
-        </div><!--/category-products-->
+            <% ///out.print(request.getAttribute("id"));%>
+            <div class="col-sm-9 padding-right">
+                <div class="features_items"><!--features_items-->
+                    <h2 class="title text-center">Listado de productos</h2>
 
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <%
+                            ModelProducto model = new ModelProducto();
+                            ArrayList<Producto> productos = model.getProductos();
+                            for(Producto prod : productos) {
+                        %>
+                        <tr>
+                            <td><% out.print(prod.getNombre()); %></td>
+                            <td>S/. <% out.print(prod.getPrecio()); %></td>
+                            <td><% out.print(prod.getCantidad()); %></td>
+                            <td>
+                                <a href="#" alt="agregar imagenes" title="Agregar imagen"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></a>
+
+                            </td>
+                        </tr>
+                        <%
+                            }
+                        %>
+
+                        </tbody>
+                    </table>
+
+
+                </div><!--features_items-->
+
+            </div>
+        </div>
     </div>
-</div>
-
-   <%
-       ModelCategoria model = new ModelCategoria();
-       ArrayList<Categoria> categorias = model.getCategorias();
-   %>
-
-<div class="col-sm-9 padding-right">
-<div class="features_items"><!--features_items-->
-    <h2 class="title text-center">Publicar Producto</h2>
-    <!-- Formulario -->
-    <form action="/productos" class="contact-form row" method="post">
-        <div class="form-group col-md-12">
-            <input type="text" name="nombre" class="form-control" required="required" placeholder="Nombre producto">
-        </div>
-        <div class="form-group col-md-4">
-            <input type="text" name="precio" class="form-control" required="required" placeholder="Precio">
-        </div>
-        <div class="form-group col-md-4">
-            <input type="text" name="cantidad" class="form-control" required="required" placeholder="Cantidad">
-        </div>
-        <div class="form-group col-md-4">
-            <input type="text" name="estado" class="form-control" required="required" placeholder="Estado">
-        </div>
-
-        <div class="form-group col-md-4">
-            <select name="categoria">
-                <%  for(Categoria cat : categorias) {%>
-                    <option value="<%= cat.getId()%>"><%= cat.getNombre()%></option>
-                <% } %>
-            </select>
-        </div>
-
-        <div class="form-group col-md-12">
-            <textarea name="descripcion" required="required" class="form-control" rows="8" placeholder="Descripción del producto"></textarea>
-        </div>
-
-        <div class="form-group col-md-12">
-            <input type="submit" name="submit" class="btn btn-primary pull-right" value="Publicar">
-        </div>
-    </form>
-
-</div><!--features_items-->
-
-
-</div>
-</div>
-</div>
 </section>
 
 <footer id="footer"><!--Footer-->

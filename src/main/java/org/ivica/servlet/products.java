@@ -15,10 +15,14 @@ import java.sql.SQLException;
  */
 public class products extends HttpServlet {
 
-    private final String UPLOAD_DIRECTORY = "C:/imagenes";
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Producto producto = new Producto();
 
 
@@ -31,20 +35,14 @@ public class products extends HttpServlet {
 
         ModelProducto model = new ModelProducto();
 
-       try {
+        try {
             model.save(producto);
-            request.setAttribute("Id",producto.getId());
-            response.sendRedirect("imagen_producto.jsp");
 
+            response.sendRedirect("listado.jsp");
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
        }
 }
