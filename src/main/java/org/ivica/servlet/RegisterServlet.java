@@ -1,7 +1,7 @@
 package org.ivica.servlet;
 
-import org.ivica.clases.Usuario;
-import org.ivica.modelos.ModelUsuario;
+import org.ivica.entity.User;
+import org.ivica.model.UserModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,25 +13,28 @@ import java.sql.SQLException;
 /**
  * Created by mirakel on 28/06/2015.
  */
-public class Register extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Usuario usuario = new Usuario();
+        User usuario = new User();
+
         usuario.setNombres(request.getParameter("nombres"));
         usuario.setApellidos(request.getParameter("apellidos"));
         usuario.setEmail(request.getParameter("email"));
         usuario.setUsername(request.getParameter("usuario"));
         usuario.setPassword(request.getParameter("password"));
 
-        ModelUsuario model = new ModelUsuario();
+        UserModel registro = new UserModel();
+
         try {
-            model.save(usuario);
-            response.sendRedirect("Mensaje.jsp");
+            registro.save(usuario);
+            response.sendRedirect("/login?mensaje=ok");
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            response.sendRedirect("/login?mensaje=error");
+            System.out.print("Error: " + e.getMessage());
         }
     }
 }

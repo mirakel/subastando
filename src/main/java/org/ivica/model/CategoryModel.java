@@ -1,6 +1,6 @@
-package org.ivica.modelos;
+package org.ivica.model;
 
-import org.ivica.clases.Categoria;
+import org.ivica.entity.Category;
 import org.ivica.config.Database;
 
 import java.sql.PreparedStatement;
@@ -12,34 +12,34 @@ import java.util.ArrayList;
 /**
  * Created by mirakel on 30/06/2015.
  */
-public class ModelCategoria {
+public class CategoryModel {
 
     private PreparedStatement pstm;
     private Statement stm;
     private ResultSet result;
     private Database db;
 
-    public ModelCategoria() {
+    public CategoryModel() {
         this.pstm = null;
         this.stm = null;
         this.result = null;
         this.db = new Database();
     }
 
-    public ArrayList<Categoria> getCategorias() throws SQLException {
-        ArrayList<Categoria> categorias = new ArrayList<Categoria>();
-        String sql = "Select * from categoria";
+    public ArrayList<Category> getCategorias() throws SQLException {
+        ArrayList<Category> categorias = new ArrayList<Category>();
+        String sql = "Select * from categorias";
 
         try {
             stm = db.conectar().createStatement();
             result = stm.executeQuery(sql);
 
             while (result.next()){
-                Categoria categoria = new Categoria();
+                Category categoria = new Category();
                 categoria.setId(result.getInt(1));
                 categoria.setNombre(result.getString(2));
-                categoria.setDescripcion(result.getString(3));
-
+                categoria.setDescripcion(result.getString(4));
+                categoria.setPadre(result.getInt(5));
                 categorias.add(categoria);
             }
 

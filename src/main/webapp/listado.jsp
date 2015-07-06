@@ -1,5 +1,5 @@
-<%@ page import="org.ivica.modelos.ModelProducto" %>
-<%@ page import="org.ivica.clases.Producto" %>
+<%@ page import="org.ivica.model.ProductModel" %>
+<%@ page import="org.ivica.entity.Product" %>
 <%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
@@ -179,9 +179,9 @@
                         </thead>
                         <tbody>
                         <%
-                            ModelProducto model = new ModelProducto();
-                            ArrayList<Producto> productos = model.getProductos();
-                            for(Producto prod : productos) {
+                            ProductModel model = new ProductModel();
+                            ArrayList<Product> productos = model.getProductos();
+                            for(Product prod : productos) {
                         %>
                         <tr>
                             <td><% out.print(prod.getNombre()); %></td>
