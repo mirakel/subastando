@@ -46,17 +46,17 @@
                             <% if(sessionOk != null && sessionOk.getAttribute("username") != null ){ %>
                             <li class="dropdown"><a href="#"><i class="fa fa-user"></i> Mi cuenta <i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="#">Editar Perfil</a></li>
-                                    <li><a href="#">Publicar Productos</a></li>
+                                    <li><a href="/perfil">Editar Perfil</a></li>
+                                    <li><a href="/products">Publicar Productos</a></li>
                                 </ul>
                             </li>
                             <% } %>
                             <li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="#"><i class="fa fa-shopping-cart"></i> Mi carrito</a></li>
                             <% if(sessionOk != null && sessionOk.getAttribute("username") != null){%>
-                            <li><a href="#"><i class="fa fa-lock"></i> Salir </a></li>
+                            <li><a href="salir.jsp"><i class="fa fa-lock"></i> Salir </a></li>
                             <% }else {%>
-                            <li><a href="#"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="/login"><i class="fa fa-lock"></i> Login</a></li>
                             <% }%>
                         </ul>
                     </div>

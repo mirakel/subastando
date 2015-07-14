@@ -38,7 +38,7 @@ public class ContactServlet extends HttpServlet {
             message.save(contacto);
             request.setAttribute("saved", true);
             request.setAttribute("Message", "Hubo un error al enviar. Por favor intente nuevamente.");
-            request.getRequestDispatcher("views/web/contact.jsp").forward(request, response);
+            response.sendRedirect("/contact?mensaje=ok");
 
         } catch (SQLException e) {
             System.out.print("Error: " + e.getMessage());

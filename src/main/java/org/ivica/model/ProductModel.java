@@ -76,7 +76,7 @@ public class ProductModel {
                 producto.setDescripcion(result.getString(4));
                 producto.setCantidad(result.getInt(5));
                 producto.setPrecio(result.getDouble(6));
-
+                producto.setPortada(result.getString(8));
                 productos.add(producto);
             }
 

@@ -36,14 +36,34 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>productos</servlet-name>
+        <servlet-name>products</servlet-name>
         <servlet-class>
-            org.ivica.servlet.products
+            org.ivica.servlet.ProductServlet
         </servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>productos</servlet-name>
-        <url-pattern>/productos</url-pattern>
+        <servlet-name>products</servlet-name>
+        <url-pattern>/products</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>listado</servlet-name>
+        <servlet-class>
+            org.ivica.servlet.ListProductServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listado</servlet-name>
+        <url-pattern>/listproducts</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>perfil</servlet-name>
+        <servlet-class>
+            org.ivica.servlet.PerfilServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>perfil</servlet-name>
+        <url-pattern>/perfil</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>Web</servlet-name>
@@ -55,17 +75,7 @@
         <servlet-name>Web</servlet-name>
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>FileUploadHandler</servlet-name>
-        <servlet-class>org.ivica.servlet.FileUploadHandler</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FileUploadHandler</servlet-name>
-        <url-pattern>/upload</url-pattern>
-    </servlet-mapping>
-
     <listener>
         <listener-class>org.ivica.config.TestTilesListener</listener-class>
     </listener>
-
 </web-app>

@@ -3,6 +3,8 @@ package org.ivica.servlet;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.tiles.TilesContainer;
+import org.apache.tiles.access.TilesAccess;
 import org.ivica.entity.Product;
 import org.ivica.model.ProductModel;
 
@@ -15,14 +17,15 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class products extends HttpServlet {
+public class ProductServlet extends HttpServlet {
     private final String DIRECTORY_IMAGE = "D:/imagenes";
     private Product producto = new Product();
 
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        TilesContainer container = TilesAccess.getContainer(
+                request.getSession().getServletContext());
+        container.render("products", request, response);
 
     }
 
@@ -37,17 +40,20 @@ public class products extends HttpServlet {
                 for (FileItem item : multiparts){
 
                     if(!item.isFormField()){
+                        //Guardando la imagen
                         String name = new File(item.getName()).getName();
                         item.write(new File(DIRECTORY_IMAGE + File.separator + name));
+                        String portada = DIRECTORY_IMAGE + "/"+ name;
+                        producto.setPortada(portada);
                     }
                     if (item.isFormField()){
                         //procesando los campos del Formulario
                         processFieldForm(item);
-
                     }
                 }
 
                try{
+                   producto.setId_usuario(1);
                    ProductModel model = new ProductModel();
                    model.save(producto);
 
@@ -55,13 +61,13 @@ public class products extends HttpServlet {
                    System.out.print("Error" + ex);
                }
 
-                request.setAttribute("mensaje","El archivo se subio correctamente");
+                response.sendRedirect("/listproducts?mensaje=ok");
 
             } catch (Exception e) {
                 System.out.print("Error" + e);
             }
 
-            request.getRequestDispatcher("/prueba.jsp").forward(request,response);
+
         }
 
        }

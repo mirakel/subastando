@@ -14,7 +14,7 @@
                 </div>
                 <div class="mainmenu pull-left">
                     <ul class="nav navbar-nav collapse navbar-collapse">
-                        <li><a href="#" class="active">Inicio</a></li>
+                        <li><a href="/home" class="active">Inicio</a></li>
                         <li><a href="#">Celulares & Tables</a></li>
                         <li><a href="#">Electrodomesticos</a></li>
                         <li><a href="#">Hogar</a></li>
@@ -25,7 +25,7 @@
                                 <li><a href="#">Accesorios</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Contáctanos</a></li>
+                        <li><a href="/contact">Contáctanos</a></li>
                     </ul>
                 </div>
             </div>

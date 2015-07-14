@@ -6,6 +6,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div id="contact-page" class="container">
+    <% if(request.getParameter("mensaje") != null){ %>
+    <div class="row">
+        <div class="col-sm-12">
+            <% if (request.getParameter("mensaje").equals("ok")){ %>
+            <div class="alert alert-success" role="alert">
+                <strong>El mensaje se envio con éxito!</strong></div>
+            <% }else if(request.getParameter("mensaje").equals("error")){ %>
+            <div class="alert alert-danger" role="alert">Hubo un error al enviar. Por favor intente nuevamente.</div>
+            <%} %>
+        </div>
+    </div>
+    <% } %>
     <div class="bg">
         <div class="row">
             <div class="col-sm-12">

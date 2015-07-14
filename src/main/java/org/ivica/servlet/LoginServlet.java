@@ -56,12 +56,11 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("nombres",usuario.getNombres());
             session.setAttribute("apellidos",usuario.getApellidos());
             session.setAttribute("telefono",usuario.getTelefono());
-
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("/home?mensaje=ok");
 
         } catch (SQLException e) {
-
-            e.printStackTrace();
+            response.sendRedirect("/home?mensaje=error");
+            System.out.print("Error: " + e.getMessage());
         }
 
     }

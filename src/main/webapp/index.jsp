@@ -75,8 +75,8 @@
                             <% if(sessionOk != null && sessionOk.getAttribute("username") != null ){ %>
                                 <li class="dropdown"><a href="#"><i class="fa fa-user"></i> Mi cuenta <i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="editar_perfil.jsp">Editar Perfil</a></li>
-                                    <li><a href="publicar_producto.jsp">Publicar Productos</a></li>
+                                    <li><a href="#">Editar Perfil</a></li>
+                                    <li><a href="#">Publicar Productos</a></li>
                                 </ul>
                                 </li>
                             <% } %>

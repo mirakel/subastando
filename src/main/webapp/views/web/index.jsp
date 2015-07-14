@@ -1,3 +1,6 @@
+<%@ page import="org.ivica.model.ProductModel" %>
+<%@ page import="org.ivica.entity.Product" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="row">
@@ -119,6 +122,41 @@
 <div class="col-sm-9 padding-right">
 <div class="features_items"><!--features_items-->
     <h2 class="title text-center">Novedades</h2>
+
+    <%
+        ProductModel model = new ProductModel();
+        ArrayList<Product> productos = model.getProductos();
+        for(Product prod : productos) {
+    %>
+    <div class="col-sm-4">
+        <div class="product-image-wrapper">
+            <div class="single-products">
+                <div class="productinfo text-center">
+                    <img src="../../<% out.print(prod.getPortada()); %>" alt="" />
+                    <h2>S/. <% out.print(prod.getPrecio()); %></h2>
+                    <p><% out.print(prod.getNombre()); %></p>
+                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Comprar</a>
+                </div>
+                <div class="product-overlay">
+                    <div class="overlay-content">
+                        <h2>S/.  <% out.print(prod.getPrecio()); %></h2>
+                        <p><% out.print(prod.getNombre()); %></p>
+                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Comprar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="choose">
+                <ul class="nav nav-pills nav-justified">
+                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <%
+        }
+    %>
     <div class="col-sm-4">
         <div class="product-image-wrapper">
             <div class="single-products">
